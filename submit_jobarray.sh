@@ -4,8 +4,8 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=######put-your-email-here######
 # we start 6 jobs with array index 0 to 5, but only 4 run at once
-# each job gets one CPU and 4G of memory. Not that each failed 
-# job will send an email, you can also say END or ALL for the
+# each job gets one CPU and 4G of memory. Note that each failed 
+# job will send an email. You can also use END or ALL for the
 # mail-type but this may lead to many emails. 
 #SBATCH --array=0-5%4
 #SBATCH --output=%A-%a.slurm.out

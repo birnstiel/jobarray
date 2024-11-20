@@ -41,3 +41,9 @@ or for PyPI packages with
 If needed you can "activate" the environment with `pixi shell`, for example to install it as a jupyter kernel
 
     python -m ipykernel install --user --name Pixi
+
+If you need locally installed packages (e.g. something you cloned and installed with `pip install -e .`), you can put this into `pixi.toml` under the pypi section:
+
+    [pypi-dependencies]
+    idefixhelper = { path = "../CODES/idefixhelper", editable = true}
+
