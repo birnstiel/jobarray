@@ -26,6 +26,25 @@ def run(n):
     sim.initialize()
     sim.writer.datadir = name
     sim.writer.overwrite = True
+
+    # don't save large arrays
+    sim.dust.kernel.save = False
+    sim.dust.p.frag.save = False
+    sim.dust.p.stick.save = False
+    sim.dust.v.rel.azi.save = False
+    sim.dust.v.rel.brown.save = False
+    sim.dust.v.rel.rad.save = False
+    sim.dust.v.rel.tot.save = False
+    sim.dust.v.rel.turb.save = False
+    sim.dust.v.rel.vert.save = False
+    sim.dust.coagulation.stick.save = False
+    sim.dust.coagulation.stick_ind.save = False
+    sim.dust.coagulation.A.save = False
+    sim.dust.coagulation.eps.save = False
+    sim.dust.coagulation.lf_ind.save = False
+    sim.dust.coagulation.rm_ind.save = False
+    sim.dust.coagulation.phi.save = False
+
     sim.run()
 
 
@@ -64,12 +83,13 @@ def check_status_single(n):
     reader.datadir = name
 
     files = reader.read.listfiles()
+    print(f'{n:<4d} - {name+":":30} ', end='')
     if len(files) == 0:
-        print(f'{n} - {name}: no files')
+        print('no files')
     else:    
         file = Path(files[-1])
         #data = reader.read.output(str(file))
-        print(f'{n:<4d} - {name}: output #{file.name[4:8]}')
+        print(f'output #{file.name[4:8]}')
 
 
 # combine the commands into one command line program

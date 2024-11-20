@@ -27,7 +27,7 @@ echo -n "It's now "
 date 
 
 # start the job, here the array index is passed to the call
-pixi run --manifest-path ~/pixi/pixi.toml python jobarray.py run -n $SLURM_ARRAY_TASK_ID
+pixi run python jobarray.py run -n $SLURM_ARRAY_TASK_ID
 
 echo "Job completed"
 echo -n "It's now "
